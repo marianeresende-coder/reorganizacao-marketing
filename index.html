@@ -158,6 +158,24 @@
     .bm { background: var(--cyan);  color: #fff; }
     .bn { background: var(--green); color: #fff; }
 
+    /* ── ROLES SECTION ── */
+    .roles-section { max-width: 1000px; margin: 0 auto; padding: 44px 24px 52px; }
+    .roles-section h2 { font-size: 1rem; font-weight: 700; color: var(--text); margin-bottom: 28px; }
+    .roles-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+    @media (max-width: 700px) { .roles-grid { grid-template-columns: 1fr; } }
+
+    .role-card { background: var(--white); border: 1px solid var(--border); border-radius: 12px; padding: 22px 22px 20px; box-shadow: var(--sh); }
+    .role-card-header { display: flex; align-items: center; gap: 10px; margin-bottom: 16px; padding-bottom: 14px; border-bottom: 1px solid var(--border); }
+    .role-dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
+    .role-dot-c  { background: var(--amber); }
+    .role-dot-n  { background: var(--green); }
+    .role-card-header .title { font-size: .8rem; font-weight: 700; color: var(--text); }
+    .role-card-header .person { font-size: .7rem; color: var(--muted); margin-top: 1px; }
+
+    .role-card ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+    .role-card li { display: flex; gap: 10px; align-items: flex-start; font-size: .79rem; color: #3a3a5c; line-height: 1.45; }
+    .role-card li::before { content: '→'; color: var(--muted); flex-shrink: 0; font-size: .75rem; margin-top: 1px; }
+
     /* ── LEGEND ── */
     .legend { display: flex; gap: 16px; flex-wrap: wrap; justify-content: center; padding: 22px 20px 32px; border-top: 1px solid var(--border); background: var(--white); }
     .li { display: flex; align-items: center; gap: 6px; font-size: .73rem; color: var(--muted); }
@@ -253,6 +271,48 @@
         </ul>
       </li>
     </ul>
+  </div>
+</div>
+
+<!-- ════════════════ NOVOS CARGOS ════════════════ -->
+<hr class="divider"/>
+<div class="roles-section">
+  <h2>Principais atividades dos novos cargos</h2>
+  <div class="roles-grid">
+
+    <div class="role-card">
+      <div class="role-card-header">
+        <div class="role-dot role-dot-c"></div>
+        <div>
+          <div class="title">IA Creator Coordinator</div>
+          <div class="person">Anna Beatriz</div>
+        </div>
+      </div>
+      <ul>
+        <li>Gerir o pipeline completo de criação, do briefing à entrega final, garantindo qualidade e prazo</li>
+        <li>Ser responsável pelas metas de produção dos squads e reportar resultados</li>
+        <li>Definir as IAs e stacks tecnológicas para cada tipo de entregável (estático, narrado, apresentadora, etc.)</li>
+        <li>Ser a referência técnica e criativa da equipe — ponto de decisão sobre ferramentas e processos</li>
+        <li>Garantir consistência de padrão criativo e alinhamento de marca em todos os squads</li>
+        <li>Mapear, testar e homologar novas ferramentas de IA antes de adotar no fluxo</li>
+      </ul>
+    </div>
+
+    <div class="role-card">
+      <div class="role-card-header">
+        <div class="role-dot role-dot-n"></div>
+        <div>
+          <div class="title">IA Creator</div>
+          <div class="person">Jean, Jaque, Laura, Henrique, Johny, Rodrigo</div>
+        </div>
+      </div>
+      <ul>
+        <li>Liderar a criação de conteúdo, campanhas e assets utilizando IA</li>
+        <li>Testar e explorar novas ferramentas de IA para melhorar campanhas e engajamento do cliente</li>
+        <li>Conduzir a narrativa do produto, desde o conceito até a execução, utilizando IA para personalização e inovação</li>
+      </ul>
+    </div>
+
   </div>
 </div>
 
