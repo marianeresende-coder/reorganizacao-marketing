@@ -6,9 +6,9 @@
   <title>Reorganização — Time de Marketing</title>
   <style>
     :root {
-      --bg: #f5f6fa;
+      --bg: #f4f5f9;
       --white: #ffffff;
-      --border: #e2e6f0;
+      --border: #dde1ef;
       --text: #1a1a2e;
       --muted: #7b80a0;
       --purple: #6d28d9;
@@ -17,164 +17,157 @@
       --amber: #d97706;
       --cyan: #0891b2;
       --green: #16a34a;
-      --line: #d8dcea;
-      --shadow: 0 1px 4px rgba(30,30,80,.07);
+      --line: #bdc4db;
+      --sh: 0 1px 3px rgba(30,30,80,.09);
     }
-
     * { box-sizing: border-box; margin: 0; padding: 0; }
-
-    body {
-      font-family: -apple-system, 'Segoe UI', sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      min-height: 100vh;
-    }
+    body { font-family: -apple-system,'Segoe UI',sans-serif; background: var(--bg); color: var(--text); min-height: 100vh; }
 
     /* ── HERO ── */
-    .hero {
-      background: linear-gradient(135deg, #ede9fe 0%, #ffffff 55%);
-      padding: 52px 24px 44px;
-      text-align: center;
-      border-bottom: 1px solid var(--border);
-    }
-    .hero h1 { font-size: clamp(1.5rem, 4vw, 2.3rem); font-weight: 800; color: var(--text); letter-spacing: -.4px; }
+    .hero { background: linear-gradient(135deg,#ede9fe 0%,#fff 55%); padding: 48px 24px 38px; text-align: center; border-bottom: 1px solid var(--border); }
+    .hero h1 { font-size: clamp(1.4rem,4vw,2.1rem); font-weight: 800; }
     .hero h1 em { color: var(--purple); font-style: normal; }
-    .hero p { color: var(--muted); margin-top: 6px; font-size: 0.9rem; }
-
-    /* ── STATS ── */
-    .stats {
-      display: flex; justify-content: center; gap: 14px; flex-wrap: wrap;
-      margin: 30px auto 0; padding: 0 20px; max-width: 640px;
-    }
-    .stat {
-      background: var(--white); border: 1px solid var(--border); border-radius: 12px;
-      padding: 14px 22px; text-align: center; flex: 1; min-width: 100px; box-shadow: var(--shadow);
-    }
-    .stat b { font-size: 1.9rem; font-weight: 800; display: block; line-height: 1; }
-    .stat span { font-size: 0.66rem; color: var(--muted); text-transform: uppercase; letter-spacing: 1px; margin-top: 4px; display: block; }
-    .stat.s-exits b  { color: var(--red); }
-    .stat.s-change b { color: var(--amber); }
-    .stat.s-squads b { color: var(--purple); }
+    .hero p { color: var(--muted); margin-top: 5px; font-size: .88rem; }
+    .stats { display: flex; justify-content: center; gap: 12px; flex-wrap: wrap; margin: 26px auto 0; max-width: 520px; }
+    .stat { background: var(--white); border: 1px solid var(--border); border-radius: 10px; padding: 12px 20px; text-align: center; flex: 1; min-width: 90px; box-shadow: var(--sh); }
+    .stat b { font-size: 1.75rem; font-weight: 800; display: block; line-height: 1; }
+    .stat span { font-size: .64rem; color: var(--muted); text-transform: uppercase; letter-spacing: 1px; margin-top: 3px; display: block; }
+    .stat.sx b { color: var(--red); } .stat.sc b { color: var(--amber); } .stat.ss b { color: var(--purple); }
 
     /* ── SECTION ── */
-    .section { max-width: 1320px; margin: 0 auto; padding: 44px 24px 52px; }
-
-    .tag {
-      display: inline-flex; align-items: center; gap: 6px;
-      padding: 5px 18px; border-radius: 100px; font-size: 0.72rem;
-      font-weight: 700; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 32px;
-    }
+    .section { max-width: 1500px; margin: 0 auto; padding: 38px 20px 48px; }
+    .tag { display: inline-flex; align-items: center; padding: 4px 16px; border-radius: 100px; font-size: .7rem; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 26px; }
     .tag-de   { background: #fef2f2; color: #b91c1c; border: 1px solid #fecaca; }
     .tag-para { background: #f0fdf4; color: #15803d; border: 1px solid #bbf7d0; }
-
     .divider { border: none; border-top: 1px solid var(--border); }
-    .arrow-transition {
-      background: var(--white); text-align: center;
-      padding: 24px; font-size: 2.2rem; color: var(--purple-l);
+    .arrow { background: var(--white); text-align: center; padding: 20px; font-size: 2rem; color: var(--purple-l); }
+
+    /* ══════════════════════════════
+       ORG CHART — CSS tree
+    ══════════════════════════════ */
+    .tree-scroll { overflow-x: auto; padding-bottom: 16px; }
+
+    .tree, .tree ul {
+      list-style: none;
+      margin: 0; padding: 0;
+      position: relative;
+      display: flex;
+      justify-content: center;
     }
 
-    /* ── TREE ── */
-    .tree-wrap { display: flex; flex-direction: column; align-items: center; }
-    .vline { width: 2px; height: 28px; background: var(--line); flex-shrink: 0; }
-
-    .level {
-      display: flex; flex-wrap: wrap; justify-content: center;
-      align-items: flex-start; gap: 8px;
+    /* Vertical space above children row, and the line that fills it */
+    .tree ul { padding-top: 24px; }
+    .tree ul::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 50%;
+      border-left: 2px solid var(--line);
+      width: 0; height: 24px;
     }
 
-    /* ── CARDS ── */
-    .card {
-      background: var(--white); border: 1px solid var(--border); border-radius: 10px;
-      padding: 10px 13px; min-width: 152px; max-width: 178px;
-      text-align: center; position: relative; box-shadow: var(--shadow);
-    }
-    .card .nm { font-size: 0.81rem; font-weight: 600; color: var(--text); line-height: 1.35; }
-    .card .rl { font-size: 0.67rem; color: var(--muted); margin-top: 3px; line-height: 1.3; }
-
-    .card-root {
-      background: linear-gradient(135deg, #ede9fe, #ddd6fe);
-      border-color: #c4b5fd; min-width: 210px;
-      box-shadow: 0 2px 10px rgba(109,40,217,.13);
-    }
-    .card-root .nm { color: var(--purple); font-size: 0.9rem; font-weight: 700; }
-    .card-root .rl { color: var(--purple-l); font-weight: 600; font-size: 0.72rem; }
-
-    .card-x { border-color: #fca5a5; background: #fff5f5; }
-    .card-x .nm { color: var(--red); text-decoration: line-through; }
-    .card-x .rl { color: #f87171; }
-
-    .card-c { border-color: #fcd34d; background: #fffbeb; }
-    .card-c .rl { color: var(--amber); font-weight: 600; }
-
-    .card-m { border-color: #67e8f9; background: #ecfeff; }
-    .card-m .rl { color: var(--cyan); font-weight: 600; }
-
-    .card-n { border-color: #86efac; background: #f0fdf4; }
-    .card-n .nm { color: #166534; }
-    .card-n .rl { color: var(--green); font-weight: 600; }
-
-    .badge {
-      position: absolute; top: -7px; right: -7px;
-      width: 17px; height: 17px; border-radius: 50%;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 8px; font-weight: 800;
-    }
-    .bdg-x { background: var(--red); color: #fff; }
-    .bdg-c { background: var(--amber); color: #fff; }
-    .bdg-m { background: var(--cyan); color: #fff; }
-    .bdg-n { background: var(--green); color: #fff; }
-
-    /* ── SUB-SECTION (below main level row, Anna's team) ── */
-    .sub-section { display: flex; flex-direction: column; align-items: center; }
-
-    .sub-label {
-      display: flex; align-items: center; gap: 10px;
-      font-size: 0.68rem; font-weight: 700; color: var(--muted);
-      text-transform: uppercase; letter-spacing: 1.5px;
-      margin-bottom: 12px; white-space: nowrap;
-    }
-    .sub-label::before, .sub-label::after {
-      content: ''; display: block; height: 1px;
-      background: var(--border); width: 60px;
+    /* Each child node */
+    .tree li {
+      position: relative;
+      padding: 24px 6px 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
     }
 
-    .subteam {
-      background: var(--white); border: 1px solid var(--border); border-radius: 10px;
-      padding: 14px 12px 12px; display: flex; gap: 8px;
-      flex-wrap: wrap; justify-content: center; box-shadow: var(--shadow);
+    /* Horizontal connector: left half + right-side vertical down */
+    .tree li::before {
+      content: '';
+      position: absolute;
+      top: 0; right: 50%;
+      border-top: 2px solid var(--line);
+      border-right: 2px solid var(--line);
+      width: 50%; height: 24px;
     }
 
-    /* ── SQUADS ── */
-    .squads-row { display: flex; gap: 12px; flex-wrap: wrap; justify-content: center; }
-    .squad {
-      background: #faf5ff; border: 1px solid #ddd6fe; border-radius: 12px;
-      padding: 14px 12px 12px; display: flex; flex-direction: column;
-      align-items: center; gap: 10px;
+    /* Horizontal connector: right half + left-side vertical down */
+    .tree li::after {
+      content: '';
+      position: absolute;
+      top: 0; left: 50%;
+      border-top: 2px solid var(--line);
+      border-left: 2px solid var(--line);
+      width: 50%; height: 24px;
     }
-    .squad-name {
-      font-size: 0.67rem; font-weight: 700; letter-spacing: 0.8px;
-      text-transform: uppercase; color: var(--purple);
-      padding: 3px 12px; background: #ede9fe;
-      border-radius: 100px; white-space: nowrap;
+
+    /* Only child — no horizontal bar needed */
+    .tree li:only-child::before,
+    .tree li:only-child::after { display: none; }
+    .tree li:only-child { padding-top: 0; }
+
+    /* Root li — no connector above */
+    .tree > li::before,
+    .tree > li::after { display: none; }
+    .tree > li { padding-top: 0; }
+
+    /* Trim the bar at extremities */
+    .tree li:first-child::before { border: 0 none; }
+    .tree li:last-child::after  { border: 0 none; }
+
+    /* ── NODE BOXES ── */
+    .box {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 7px 10px;
+      min-width: 108px;
+      max-width: 135px;
+      text-align: center;
+      position: relative;
+      box-shadow: var(--sh);
+      flex-shrink: 0;
     }
-    .squad-members { display: flex; gap: 8px; }
+    .box .nm { font-size: .72rem; font-weight: 600; color: var(--text); line-height: 1.3; }
+    .box .rl { font-size: .61rem; color: var(--muted); margin-top: 2px; line-height: 1.25; }
+
+    /* Root */
+    .box-root { background: linear-gradient(135deg,#ede9fe,#ddd6fe); border-color: #c4b5fd; min-width: 155px; box-shadow: 0 2px 8px rgba(109,40,217,.15); }
+    .box-root .nm { color: var(--purple); font-size: .78rem; font-weight: 700; }
+    .box-root .rl { color: var(--purple-l); font-weight: 600; }
+
+    /* exits */
+    .box-x { border-color: #fca5a5; background: #fff5f5; }
+    .box-x .nm { color: var(--red); text-decoration: line-through; }
+    .box-x .rl { color: #f87171; }
+
+    /* changed role */
+    .box-c { border-color: #fcd34d; background: #fffbeb; }
+    .box-c .rl { color: var(--amber); font-weight: 600; }
+
+    /* moved */
+    .box-m { border-color: #67e8f9; background: #ecfeff; }
+    .box-m .rl { color: var(--cyan); font-weight: 600; }
+
+    /* new */
+    .box-n { border-color: #86efac; background: #f0fdf4; }
+    .box-n .nm { color: #166534; }
+    .box-n .rl { color: var(--green); font-weight: 600; }
+
+    /* squad label */
+    .box-sq { border-color: #c4b5fd; background: #ede9fe; min-width: 120px; }
+    .box-sq .nm { color: var(--purple); font-size: .63rem; font-weight: 700; text-transform: uppercase; letter-spacing: .5px; }
+
+    /* badge */
+    .bdg { position: absolute; top: -6px; right: -6px; width: 14px; height: 14px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 7px; font-weight: 800; }
+    .bx { background: var(--red);   color: #fff; }
+    .bc { background: var(--amber); color: #fff; }
+    .bm { background: var(--cyan);  color: #fff; }
+    .bn { background: var(--green); color: #fff; }
 
     /* ── LEGEND ── */
-    .legend {
-      display: flex; gap: 18px; flex-wrap: wrap; justify-content: center;
-      padding: 24px 20px 36px; border-top: 1px solid var(--border);
-      background: var(--white);
-    }
-    .li { display: flex; align-items: center; gap: 7px; font-size: 0.76rem; color: var(--muted); }
-    .ld { width: 10px; height: 10px; border-radius: 3px; border: 1px solid; flex-shrink: 0; }
-    .ld-n  { background: #f0f0f8; border-color: #c8cde0; }
-    .ld-x  { background: #fee2e2; border-color: #fca5a5; }
-    .ld-c  { background: #fef3c7; border-color: #fcd34d; }
-    .ld-m  { background: #cffafe; border-color: #67e8f9; }
-    .ld-nw { background: #dcfce7; border-color: #86efac; }
-    .ld-s  { background: #ede9fe; border-color: #c4b5fd; }
-
-    .scroll-x { overflow-x: auto; }
+    .legend { display: flex; gap: 16px; flex-wrap: wrap; justify-content: center; padding: 22px 20px 32px; border-top: 1px solid var(--border); background: var(--white); }
+    .li { display: flex; align-items: center; gap: 6px; font-size: .73rem; color: var(--muted); }
+    .ld { width: 9px; height: 9px; border-radius: 3px; border: 1px solid; flex-shrink: 0; }
+    .ld-n  { background:#f0f0f8; border-color:#c8cde0; }
+    .ld-x  { background:#fee2e2; border-color:#fca5a5; }
+    .ld-c  { background:#fef3c7; border-color:#fcd34d; }
+    .ld-m  { background:#cffafe; border-color:#67e8f9; }
+    .ld-nw { background:#dcfce7; border-color:#86efac; }
+    .ld-s  { background:#ede9fe; border-color:#c4b5fd; }
   </style>
 </head>
 <body>
@@ -184,107 +177,87 @@
   <h1>Reorganização do <em>Time de Marketing</em></h1>
   <p>Estrutura atual → Nova estrutura com squads de criação IA</p>
   <div class="stats">
-    <div class="stat s-exits"><b>1</b><span>Saída</span></div>
-    <div class="stat s-change"><b>7</b><span>Mudanças de cargo</span></div>
-    <div class="stat s-squads"><b>3</b><span>Novos squads</span></div>
+    <div class="stat sx"><b>1</b><span>Saída</span></div>
+    <div class="stat sc"><b>7</b><span>Mudanças de cargo</span></div>
+    <div class="stat ss"><b>3</b><span>Novos squads</span></div>
   </div>
 </div>
 
 <!-- ════════════════ DE ════════════════ -->
 <div class="section">
   <div class="tag tag-de">↩ DE — Estrutura Atual</div>
-  <div class="scroll-x">
-    <div class="tree-wrap">
-
-      <div class="card card-root">
-        <div class="nm">Mariane Resende</div>
-        <div class="rl">Head de Marketing</div>
-      </div>
-      <div class="vline"></div>
-
-      <!-- Todos no mesmo nível, incluindo Anna -->
-      <div class="level">
-        <div class="card"><div class="nm">Jorge Sampaio</div><div class="rl">Analista Growth Mídia Paga</div></div>
-        <div class="card"><div class="nm">Gabrielly Nogueira</div><div class="rl">Analista Growth Mídia Não Paga</div></div>
-        <div class="card"><div class="nm">Mateus Abu</div><div class="rl">Especialista Marketing Ativação</div></div>
-        <div class="card"><div class="nm">Thaynara Oliveira</div><div class="rl">Analista Mídias Sociais</div></div>
-        <div class="card card-m"><div class="badge bdg-m">→</div><div class="nm">Laura Medeiros</div><div class="rl">Analista Product Marketing SZS</div></div>
-        <div class="card card-m"><div class="badge bdg-m">→</div><div class="nm">Rodrigo Guirado</div><div class="rl">Analista Product Marketing MKT Place</div></div>
-        <div class="card card-m"><div class="badge bdg-m">→</div><div class="nm">Jean Durval</div><div class="rl">Analista Product Marketing SZI</div></div>
-        <div class="card card-c"><div class="badge bdg-c">↻</div><div class="nm">Anna Beatriz</div><div class="rl">Coordenadora de Criação</div></div>
-      </div>
-
-      <!-- Time da Anna -->
-      <div class="sub-section">
-        <div class="vline"></div>
-        <div class="sub-label">Time da Anna Beatriz</div>
-        <div class="subteam">
-          <div class="card card-c"><div class="badge bdg-c">↻</div><div class="nm">Jaque Gonçalves</div><div class="rl">Especialista Audiovisual</div></div>
-          <div class="card card-c"><div class="badge bdg-c">↻</div><div class="nm">Johny Amaral</div><div class="rl">Especialista Design</div></div>
-          <div class="card card-c"><div class="badge bdg-c">↻</div><div class="nm">Henrique Monteverde</div><div class="rl">Analista Design</div></div>
-          <div class="card card-x"><div class="badge bdg-x">✕</div><div class="nm">Gabriel Soldorio</div><div class="rl">Analista Copy</div></div>
-        </div>
-      </div>
-
-    </div>
+  <div class="tree-scroll">
+    <ul class="tree">
+      <li>
+        <div class="box box-root"><div class="nm">Mariane Resende</div><div class="rl">Head de Marketing</div></div>
+        <ul>
+          <li><div class="box"><div class="nm">Jorge Sampaio</div><div class="rl">Analista Growth Mídia Paga</div></div></li>
+          <li><div class="box"><div class="nm">Gabrielly Nogueira</div><div class="rl">Analista Growth Mídia Não Paga</div></div></li>
+          <li><div class="box"><div class="nm">Mateus Abu</div><div class="rl">Especialista Marketing Ativação</div></div></li>
+          <li><div class="box"><div class="nm">Thaynara Oliveira</div><div class="rl">Analista Mídias Sociais</div></div></li>
+          <li><div class="box box-m"><div class="bdg bm">→</div><div class="nm">Laura Medeiros</div><div class="rl">Analista Prod. Marketing SZS</div></div></li>
+          <li><div class="box box-m"><div class="bdg bm">→</div><div class="nm">Rodrigo Guirado</div><div class="rl">Analista Prod. Marketing MKT</div></div></li>
+          <li><div class="box box-m"><div class="bdg bm">→</div><div class="nm">Jean Durval</div><div class="rl">Analista Prod. Marketing SZI</div></div></li>
+          <li>
+            <div class="box box-c"><div class="bdg bc">↻</div><div class="nm">Anna Beatriz</div><div class="rl">Coordenadora de Criação</div></div>
+            <ul>
+              <li><div class="box box-c"><div class="bdg bc">↻</div><div class="nm">Jaque Gonçalves</div><div class="rl">Especialista Audiovisual</div></div></li>
+              <li><div class="box box-c"><div class="bdg bc">↻</div><div class="nm">Johny Amaral</div><div class="rl">Especialista Design</div></div></li>
+              <li><div class="box box-c"><div class="bdg bc">↻</div><div class="nm">Henrique Monteverde</div><div class="rl">Analista Design</div></div></li>
+              <li><div class="box box-x"><div class="bdg bx">✕</div><div class="nm">Gabriel Soldorio</div><div class="rl">Analista Copy</div></div></li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+    </ul>
   </div>
 </div>
 
-<hr class="divider" />
-<div class="arrow-transition">↓</div>
-<hr class="divider" />
+<hr class="divider"/>
+<div class="arrow">↓</div>
+<hr class="divider"/>
 
 <!-- ════════════════ PARA ════════════════ -->
 <div class="section">
   <div class="tag tag-para">→ PARA — Nova Estrutura</div>
-  <div class="scroll-x">
-    <div class="tree-wrap">
-
-      <div class="card card-root">
-        <div class="nm">Mariane Resende</div>
-        <div class="rl">Head de Marketing</div>
-      </div>
-      <div class="vline"></div>
-
-      <!-- Todos no mesmo nível, incluindo Anna -->
-      <div class="level">
-        <div class="card"><div class="nm">Jorge Sampaio</div><div class="rl">Analista Growth Mídia Paga</div></div>
-        <div class="card"><div class="nm">Gabrielly Nogueira</div><div class="rl">Analista Growth Mídia Não Paga</div></div>
-        <div class="card"><div class="nm">Mateus Abu</div><div class="rl">Especialista Marketing Ativação</div></div>
-        <div class="card"><div class="nm">Thaynara Oliveira</div><div class="rl">Analista Mídias Sociais</div></div>
-        <div class="card card-c"><div class="badge bdg-c">↻</div><div class="nm">Anna Beatriz</div><div class="rl">IA Creator Coordinator</div></div>
-      </div>
-
-      <!-- Squads da Anna -->
-      <div class="sub-section">
-        <div class="vline"></div>
-        <div class="sub-label">Squads da Anna Beatriz</div>
-        <div class="squads-row">
-          <div class="squad">
-            <div class="squad-name">Squad Creator SZI</div>
-            <div class="squad-members">
-              <div class="card card-n"><div class="badge bdg-n">★</div><div class="nm">Jean Durval</div><div class="rl">IA Creator</div></div>
-              <div class="card card-n"><div class="badge bdg-n">★</div><div class="nm">Jaque Gonçalves</div><div class="rl">IA Creator</div></div>
-            </div>
-          </div>
-          <div class="squad">
-            <div class="squad-name">Squad Creator SZS</div>
-            <div class="squad-members">
-              <div class="card card-n"><div class="badge bdg-n">★</div><div class="nm">Laura Medeiros</div><div class="rl">IA Creator</div></div>
-              <div class="card card-n"><div class="badge bdg-n">★</div><div class="nm">Henrique Monteverde</div><div class="rl">IA Creator</div></div>
-            </div>
-          </div>
-          <div class="squad">
-            <div class="squad-name">Squad Creator MKT Place</div>
-            <div class="squad-members">
-              <div class="card card-n"><div class="badge bdg-n">★</div><div class="nm">Johny Amaral</div><div class="rl">IA Creator</div></div>
-              <div class="card card-n"><div class="badge bdg-n">★</div><div class="nm">Rodrigo Guirado</div><div class="rl">IA Creator</div></div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-    </div>
+  <div class="tree-scroll">
+    <ul class="tree">
+      <li>
+        <div class="box box-root"><div class="nm">Mariane Resende</div><div class="rl">Head de Marketing</div></div>
+        <ul>
+          <li><div class="box"><div class="nm">Jorge Sampaio</div><div class="rl">Analista Growth Mídia Paga</div></div></li>
+          <li><div class="box"><div class="nm">Gabrielly Nogueira</div><div class="rl">Analista Growth Mídia Não Paga</div></div></li>
+          <li><div class="box"><div class="nm">Mateus Abu</div><div class="rl">Especialista Marketing Ativação</div></div></li>
+          <li><div class="box"><div class="nm">Thaynara Oliveira</div><div class="rl">Analista Mídias Sociais</div></div></li>
+          <li>
+            <div class="box box-c"><div class="bdg bc">↻</div><div class="nm">Anna Beatriz</div><div class="rl">IA Creator Coordinator</div></div>
+            <ul>
+              <li>
+                <div class="box box-sq"><div class="nm">Squad Creator SZI</div></div>
+                <ul>
+                  <li><div class="box box-n"><div class="bdg bn">★</div><div class="nm">Jean Durval</div><div class="rl">IA Creator</div></div></li>
+                  <li><div class="box box-n"><div class="bdg bn">★</div><div class="nm">Jaque Gonçalves</div><div class="rl">IA Creator</div></div></li>
+                </ul>
+              </li>
+              <li>
+                <div class="box box-sq"><div class="nm">Squad Creator SZS</div></div>
+                <ul>
+                  <li><div class="box box-n"><div class="bdg bn">★</div><div class="nm">Laura Medeiros</div><div class="rl">IA Creator</div></div></li>
+                  <li><div class="box box-n"><div class="bdg bn">★</div><div class="nm">Henrique Monteverde</div><div class="rl">IA Creator</div></div></li>
+                </ul>
+              </li>
+              <li>
+                <div class="box box-sq"><div class="nm">Squad Creator MKT Place</div></div>
+                <ul>
+                  <li><div class="box box-n"><div class="bdg bn">★</div><div class="nm">Johny Amaral</div><div class="rl">IA Creator</div></div></li>
+                  <li><div class="box box-n"><div class="bdg bn">★</div><div class="nm">Rodrigo Guirado</div><div class="rl">IA Creator</div></div></li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+    </ul>
   </div>
 </div>
 
